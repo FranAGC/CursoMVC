@@ -9,12 +9,11 @@
 
 <div class="row">
     <div class="col-md-6">
-        @using (Html.BeginForm("Editar", "Cliente", FormMethod.Post))
+        @using (Html.BeginForm("Editar", "Cliente", FormMethod.Post, new { @id = "frmCliente" }))
         {
-
             <div>
                 @Html.LabelFor(p => p.iidcliente)
-                @Html.TextBoxFor(p => p.iidcliente, new { @class = "form-control", @readOnly=true })
+                @Html.TextBoxFor(p => p.iidcliente, new { @class = "form-control", @readOnly = true })
                 @Html.ValidationMessage("iidcliente", new { @class = "text-danger" })
             </div>
             <div>
@@ -58,11 +57,31 @@
                 @Html.TextBoxFor(p => p.telefonoCelular, new { @class = "form-control" })
                 @Html.ValidationMessage("telefonoCelular", new { @class = "text-danger" })
             </div>
-
-            <div style="margin:auto">
-                <input type="submit" class="btn btn-primary" value="Enviar" />
+            <div>
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                    Guardar
+                </button>
+                @Html.ActionLink("Regresar", "Index", "Cliente", null, new { @class = "btn btn-danger" })
             </div>
         }
-
     </div>
 </div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Desea guadar los cambios?</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+
+            <div id="fmodal">
+                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cerrar</button>
+                <button type="button" onclick="Agregar()" class="btn btn-primary">Aceptar</button>
+            </div>
+        </div>
+    </div>
+</div>
+

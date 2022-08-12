@@ -9,7 +9,7 @@
 
 <div class="row">
     <div class="col-md-6">
-        @using (Html.BeginForm("Agregar", "Cliente", FormMethod.Post, new {@id="frmCliente"}))
+        @using (Html.BeginForm("Agregar", "Cliente", FormMethod.Post, new { @id = "frmCliente" }))
         {
             <div>
                 @Html.LabelFor(p => p.nombre)
@@ -52,20 +52,16 @@
                 @Html.TextBoxFor(p => p.telefonoCelular, new { @class = "form-control" })
                 @Html.ValidationMessage("telefonoCelular", new { @class = "text-danger" })
             </div>
-
             <div>
-                <!-- Button trigger modal -->
                 <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
                     Guardar
                 </button>
-                @Html.ActionLink("Regresar", "Index", "Cliente", null, new {@class="btn btn-danger"})
+                @Html.ActionLink("Regresar", "Index", "Cliente", null, new { @class = "btn btn-danger" })
             </div>
         }
 
     </div>
 </div>
-
-
 
 
 <!-- Modal -->
@@ -77,8 +73,8 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
 
-            <div style="padding: 1em">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+            <div id="fmodal">
+                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cerrar</button>
                 <button type="button" onclick="Agregar()" class="btn btn-primary">Aceptar</button>
             </div>
         </div>

@@ -8,7 +8,7 @@ using CursoUdemy1.Models;
 namespace CursoUdemy1.Controllers
 {
     /// <summary>
-    /// CAPITULO 4-34
+    /// CAPITULO 4-35
     /// </summary>
     public class MarcaController : Controller
     {

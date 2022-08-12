@@ -35,8 +35,8 @@
                 <td>@item.telefonoFijo</td>
                 <td>@item.telefonoCelular</td>
                 <td>
-                    @Html.ActionLink(" ", "Editar", "Cliente", new { id = @item.iidcliente }, new { @class = "glyphicon glyphicon-edit btn btn-primary" })
-                    @Html.ActionLink(" ", "Eliminar", "Cliente", new { id = @item.iidcliente }, new { @class = "glyphicon glyphicon-trash btn btn-danger" })
+                    @Html.ActionLink(" ", "Editar", "Cliente", new { id = @item.iidcliente }, new { @class = "bi bi-pencil-fill btn btn-primary" })
+                    @Html.ActionLink(" ", "Eliminar", "Cliente", new { id = @item.iidcliente }, new { @class = "bi bi-trash-fill btn btn-danger" })
                 </td>
             </tr>
         }
