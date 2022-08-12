@@ -1,0 +1,87 @@
+﻿@using CursoUdemy1.Models
+@model ClienteCLS
+@{
+    ViewBag.Title = "Agregar";
+    List<SelectListItem> listaSexo = (List<SelectListItem>)ViewBag.lista;
+}
+
+<h2>Agregar</h2>
+
+<div class="row">
+    <div class="col-md-6">
+        @using (Html.BeginForm("Agregar", "Cliente", FormMethod.Post, new {@id="frmCliente"}))
+        {
+            <div>
+                @Html.LabelFor(p => p.nombre)
+                @Html.TextBoxFor(p => p.nombre, new { @class = "form-control" })
+                @Html.ValidationMessage("nombre", new { @class = "text-danger" })
+            </div>
+            <div>
+                @Html.LabelFor(p => p.apPaterno)
+                @Html.TextBoxFor(p => p.apPaterno, new { @class = "form-control" })
+                @Html.ValidationMessage("apPaterno", new { @class = "text-danger" })
+            </div>
+            <div>
+                @Html.LabelFor(p => p.apMaterno)
+                @Html.TextBoxFor(p => p.apMaterno, new { @class = "form-control" })
+                @Html.ValidationMessage("apMaterno", new { @class = "text-danger" })
+            </div>
+            <div>
+                @Html.LabelFor(p => p.email)
+                @Html.TextBoxFor(p => p.email, new { @class = "form-control" })
+                @Html.ValidationMessage("email", new { @class = "text-danger" })
+            </div>
+            <div>
+                @Html.LabelFor(p => p.direccion)
+                <p></p>
+                @Html.EditorFor(p => p.direccion, new { AllowHtmlAttribute = new { @class = "form-control" } })
+                @Html.ValidationMessage("direccion", new { @class = "text-danger" })
+            </div>
+            <div>
+                @Html.LabelFor(p => p.iidsexo)
+                @Html.DropDownList("iidsexo", listaSexo, null, new { @class = "form-control" })
+                @Html.ValidationMessage("iidsexo", new { @class = "text-danger" })
+            </div>
+            <div>
+                @Html.LabelFor(p => p.telefonoFijo)
+                @Html.TextBoxFor(p => p.telefonoFijo, new { @class = "form-control" })
+                @Html.ValidationMessage("telefonoFijo", new { @class = "text-danger" })
+            </div>
+            <div>
+                @Html.LabelFor(p => p.telefonoCelular)
+                @Html.TextBoxFor(p => p.telefonoCelular, new { @class = "form-control" })
+                @Html.ValidationMessage("telefonoCelular", new { @class = "text-danger" })
+            </div>
+
+            <div>
+                <!-- Button trigger modal -->
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                    Guardar
+                </button>
+                @Html.ActionLink("Regresar", "Index", "Cliente", null, new {@class="btn btn-danger"})
+            </div>
+        }
+
+    </div>
+</div>
+
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Desea guadar los cambios?</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+
+            <div style="padding: 1em">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                <button type="button" onclick="Agregar()" class="btn btn-primary">Aceptar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
