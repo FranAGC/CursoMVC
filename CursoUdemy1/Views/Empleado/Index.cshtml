@@ -31,8 +31,8 @@
                 <td>@item.nombreTipoUsurio</td>
                 <td>@item.nombreTipoContrato</td>
                 <td>
-                    @Html.ActionLink(" ", "Editar", "Empleado", new { id = @item.iidEmpleado }, new { @class = "glyphicon glyphicon-edit btn btn-primary" })
-                    @Html.ActionLink(" ", "Eliminar", "Empleado", new { id = @item.iidEmpleado }, new { @class = "glyphicon glyphicon-trash btn btn-danger" })
+                    @Html.ActionLink(" ", "Editar", "Empleado", new { id = @item.iidEmpleado }, new { @class = "bi bi-pencil-fill btn btn-primary" })
+                    @Html.ActionLink(" ", "Eliminar", "Empleado", new { id = @item.iidEmpleado }, new { @class = "bi bi-trash-fill btn btn-danger" })
                 </td>
             </tr>
         }

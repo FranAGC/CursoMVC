@@ -1,5 +1,7 @@
-﻿function Agregar() {
-    var frmCliente = document.getElementById("frmCliente");
-    frmCliente.submit();
+﻿function Agregar(elemento) {
+    var frmAgregar = document.getElementById(elemento);
+    frmAgregar.submit();
 }
+
+
 

@@ -52,7 +52,7 @@
                 @Html.TextBoxFor(p => p.telefonoCelular, new { @class = "form-control" })
                 @Html.ValidationMessage("telefonoCelular", new { @class = "text-danger" })
             </div>
-            <div>
+            <div id="GuardarF">
                 <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
                     Guardar
                 </button>
@@ -75,7 +75,7 @@
 
             <div id="fmodal">
                 <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cerrar</button>
-                <button type="button" onclick="Agregar()" class="btn btn-primary">Aceptar</button>
+                <button type="button" onclick="Agregar('frmCliente')" class="btn btn-primary">Aceptar</button>
             </div>
         </div>
     </div>

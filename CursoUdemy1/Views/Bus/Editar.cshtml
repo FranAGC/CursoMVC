@@ -11,7 +11,7 @@
 <h2>Editar</h2>
 
 
-@using (Html.BeginForm("Editar", "Bus", FormMethod.Post))
+@using (Html.BeginForm("Editar", "Bus", FormMethod.Post, new { @id = "frmEditarB" }))
 {
     @Html.AntiForgeryToken()
 
@@ -108,14 +108,31 @@
         </div>
     </div>
 
-    <div class="form-group">
+    <div class="form-group" id="GuardarF">
         <div class="col-md-offset-2 col-md-10">
-            <input type="submit" value="Editar" class="btn btn-primary" />
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                Guardar
+            </button>
+            @Html.ActionLink("Regresar", "Index", "Bus", null, new { @class = "btn btn-danger" })
         </div>
     </div>
 </div>
 }
 
-<div>
-    @Html.ActionLink("Back to List", "Index")
+
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Desea guadar los cambios?</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+
+            <div id="fmodal">
+                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cerrar</button>
+                <button type="button" onclick="Agregar('frmEditarB')" class="btn btn-primary">Aceptar</button>
+            </div>
+        </div>
+    </div>
 </div>
+

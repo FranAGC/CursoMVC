@@ -11,13 +11,20 @@
 
 <div class="row">
     <div class="col-md-6">
-        @using (Html.BeginForm("Editar", "Empleado", FormMethod.Post))
+        @using (Html.BeginForm("Editar", "Empleado", FormMethod.Post, new { @id = "frmEdEmpleado"}))
         {
+            <div>
+                @Html.LabelFor(p => p.iidEmpleado)
+                @Html.TextBoxFor(p => p.iidEmpleado, new { @class = "form-control", @readOnly = true })
+                @Html.ValidationMessage("iidEmpleado", new { @class = "text-danger" })
+            </div>
+
             <div>
                 @Html.LabelFor(p => p.nombre)
                 @Html.TextBoxFor(p => p.nombre, new { @class = "form-control" })
                 @Html.ValidationMessage("nombre", new { @class = "text-danger" })
             </div>
+
             <div>
                 @Html.LabelFor(p => p.apPaterno)
                 @Html.TextBoxFor(p => p.apPaterno, new { @class = "form-control" })
@@ -35,16 +42,11 @@
                 @Html.EditorFor(p => p.fechaContrato, new { htmlAtributes = new { @class = "form-control" } })
                 @Html.ValidationMessage("fechaContrato", new { @class = "text-danger" })
             </div>
+
             <div>
                 @Html.LabelFor(p => p.sueldo)
                 @Html.TextBoxFor(p => p.sueldo, new { @class = "form-control" })
                 @Html.ValidationMessage("sueldo", new { @class = "text-danger" })
-            </div>
-
-            <div>
-                @Html.LabelFor(p => p.iidtipoUsuario)
-                @Html.DropDownList("iidtipoUsuario", listaTipoUsuario, null, new { @class = "form-control" })
-                @Html.ValidationMessage("iidtipoUsuario", new { @class = "text-danger" })
             </div>
 
             <div>
@@ -58,8 +60,31 @@
                 @Html.DropDownList("iidSexo", listaSexo, null, new { @class = "form-control" })
                 @Html.ValidationMessage("iidSexo", new { @class = "text-danger" })
             </div>
-            <br />
-            <input type="submit" value="Enviar" class="btn btn-primary" />
+
+            <div>
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                    Guardar
+                </button>
+                @Html.ActionLink("Regresar", "Index", "Empleado", null, new { @class = "btn btn-danger" })
+            </div>
         }
+    </div>
+</div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Desea guadar los cambios?</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+
+            <div id="fmodal">
+                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cerrar</button>
+                <button type="button" onclick="Agregar('frmEdEmpleado')" class="btn btn-primary">Aceptar</button>
+            </div>
+        </div>
     </div>
 </div>

@@ -27,6 +27,7 @@ namespace CursoUdemy1.Controllers
                                      iidEmpleado = empleado.IIDEMPLEADO,
                                      nombre = empleado.NOMBRE,
                                      apPaterno = empleado.APPATERNO,
+                                     apMaterno = empleado.APMATERNO,
                                      nombreTipoUsurio = TipoUsuario.NOMBRE,
                                      nombreTipoContrato = TipoContrato.NOMBRE
                                  }).ToList();
@@ -153,7 +154,8 @@ namespace CursoUdemy1.Controllers
                 Empleado oEmpleado = bd.Empleado.Where(p => p.IIDEMPLEADO.Equals(id)).First();
                 oEmpleadoCLS.iidEmpleado = oEmpleado.IIDEMPLEADO;
                 oEmpleadoCLS.nombre = oEmpleado.NOMBRE;
-                oEmpleadoCLS.apPaterno = oEmpleado.APMATERNO;
+                oEmpleadoCLS.apPaterno = oEmpleado.APPATERNO;
+                oEmpleadoCLS.apMaterno = oEmpleado.APMATERNO;
                 oEmpleadoCLS.fechaContrato = (DateTime)oEmpleado.FECHACONTRATO;
                 oEmpleadoCLS.sueldo = (decimal)oEmpleado.SUELDO;
                 oEmpleadoCLS.iidtipoUsuario = (int)oEmpleado.IIDTIPOUSUARIO;
@@ -164,6 +166,33 @@ namespace CursoUdemy1.Controllers
 
 
                 return View(oEmpleadoCLS);
+        }
+
+        [HttpPost]
+        public ActionResult Editar(EmpleadoCLS oEmpleadoCLS)
+        {
+            int idEmpleado = oEmpleadoCLS.iidEmpleado;
+            if(!ModelState.IsValid)
+            {
+                return View(oEmpleadoCLS);
+            }
+
+            using (var bd = new BDPasajeEntities())
+            {
+                Empleado oEmpleado = bd.Empleado.Where(p => p.IIDEMPLEADO.Equals(idEmpleado)).First();
+                oEmpleado.NOMBRE = oEmpleadoCLS.nombre;
+                oEmpleado.APPATERNO = oEmpleadoCLS.apPaterno;
+                oEmpleado.APMATERNO = oEmpleadoCLS.apMaterno;
+                oEmpleado.FECHACONTRATO = oEmpleadoCLS.fechaContrato;
+                oEmpleado.SUELDO = oEmpleadoCLS.sueldo;
+                //oEmpleado.IIDTIPOUSUARIO = oEmpleadoCLS.iidtipoUsuario;
+                oEmpleado.IIDTIPOCONTRATO = oEmpleadoCLS.iidtipoContrato;
+                oEmpleado.IIDSEXO = oEmpleadoCLS.iidSexo;
+
+                bd.SaveChanges();
+            }
+
+            return RedirectToAction("index");
         }
 
     }

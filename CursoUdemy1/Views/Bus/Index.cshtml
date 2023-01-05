@@ -29,8 +29,8 @@
                 <td>@item.nombreSucursal</td>
                 <td>@item.nombreTipoBus</td>
                 <td>
-                    @Html.ActionLink(" ", "Editar", "Bus", new { id = @item.iidBus }, new { @class = "glyphicon glyphicon-edit btn btn-primary" })
-                    @Html.ActionLink(" ", "Eliminar", "Bus", new { id = @item.iidBus }, new { @class = "glyphicon glyphicon-trash btn btn-danger" })
+                    @Html.ActionLink(" ", "Editar", "Bus", new { id = @item.iidBus }, new { @class = "bi bi-pencil-fill btn btn-primary" })
+                    @Html.ActionLink(" ", "Eliminar", "Bus", new { id = @item.iidBus }, new { @class = "bi bi-trash-fill btn btn-danger" })
                 </td>
             </tr>
         }

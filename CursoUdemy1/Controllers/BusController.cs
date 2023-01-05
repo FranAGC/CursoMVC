@@ -125,6 +125,7 @@ namespace CursoUdemy1.Controllers
         {
             if(!ModelState.IsValid)
             {
+                listarCombos();
                 return View(oBusCLS);
             }
 
@@ -152,6 +153,32 @@ namespace CursoUdemy1.Controllers
             return RedirectToAction("Index");
         }
 
+        [HttpPost]
+        public ActionResult Editar(BusCLS oBusCLS)
+        {
+            int idBus = oBusCLS.iidBus;
+            if(!ModelState.IsValid)
+            {
+                return View(oBusCLS);
+            }
+
+            using(var bd=new BDPasajeEntities())
+            {
+                Bus oBus = bd.Bus.Where(p => p.IIDBUS.Equals(idBus)).First();
+                oBus.IIDSUCURSAL = oBusCLS.iidSucursal;
+                oBus.IIDTIPOBUS = oBusCLS.iidTipoBus;
+                oBus.FECHACOMPRA = oBusCLS.fechaCompra;
+                oBus.IIDMODELO = oBusCLS.iidModelo;
+                oBus.NUMEROCOLUMNAS = oBusCLS.numeroColumnas;
+                oBus.DESCRIPCION = oBusCLS.descripcion;
+                oBus.OBSERVACION = oBusCLS.observacion;
+                oBus.IIDMARCA = oBusCLS.iidMarca;
+
+                bd.SaveChanges();
+            }
+            return RedirectToAction("Index");
+        }
+
         public ActionResult Editar(int id)
         {
             BusCLS oBusCLS = new BusCLS();
@@ -160,6 +187,7 @@ namespace CursoUdemy1.Controllers
             using (var bd = new BDPasajeEntities())
             {
                 Bus oBus = bd.Bus.Where(p=>p.IIDBUS.Equals(id)).First();
+                oBusCLS.iidBus = (int)oBus.IIDBUS;
                 oBusCLS.iidSucursal = (int)oBus.IIDSUCURSAL;
                 oBusCLS.iidTipoBus = (int)oBus.IIDTIPOBUS;
                 oBusCLS.placa = oBus.PLACA;
